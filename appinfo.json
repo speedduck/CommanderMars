@@ -1,0 +1,62 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        "configurable"
+    ],
+    "companyName": "sean.hulka@gmail.com",
+    "longName": "CommanderMarsWatchFace",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/ground.png",
+                "name": "IMAGE_GROUND",
+                "type": "png"
+            },
+            {
+                "file": "images/yf1.png",
+                "name": "IMAGE_YF1",
+                "type": "png"
+            },
+            {
+                "file": "images/yf0.png",
+                "name": "IMAGE_YF0",
+                "type": "png"
+            },
+            {
+                "file": "images/yr1.png",
+                "name": "IMAGE_YR1",
+                "type": "png"
+            },
+            {
+                "file": "images/yr0.png",
+                "name": "IMAGE_YR0",
+                "type": "png"
+            },
+            {
+                "file": "images/yl1.png",
+                "name": "IMAGE_YL1",
+                "type": "png"
+            },
+            {
+                "file": "images/yl0.png",
+                "name": "IMAGE_YL0",
+                "type": "png"
+            },
+            {
+                "file": "images/CommanderMarsWatchLogo.png",
+                "menuIcon": true,
+                "name": "IMAGE_WATCHLOGO",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "2",
+    "shortName": "MarsWatch",
+    "uuid": "04854a6f-d4fd-4d54-bc0c-858a18f118ee",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
