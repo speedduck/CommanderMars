@@ -9,38 +9,48 @@
     "resources": {
         "media": [
             {
-                "file": "images/ground.png",
-                "name": "IMAGE_GROUND",
+                "file": "images/ground9.png",
+                "name": "IMAGE_GROUND9",
                 "type": "png"
             },
             {
-                "file": "images/yf1.png",
-                "name": "IMAGE_YF1",
+                "file": "images/ground8.png",
+                "name": "IMAGE_GROUND8",
                 "type": "png"
             },
             {
-                "file": "images/yf0.png",
-                "name": "IMAGE_YF0",
+                "file": "images/ground7.png",
+                "name": "IMAGE_GROUND7",
                 "type": "png"
             },
             {
-                "file": "images/yr1.png",
-                "name": "IMAGE_YR1",
+                "file": "images/ground6.png",
+                "name": "IMAGE_GROUND6",
                 "type": "png"
             },
             {
-                "file": "images/yr0.png",
-                "name": "IMAGE_YR0",
+                "file": "images/ground5.png",
+                "name": "IMAGE_GROUND5",
                 "type": "png"
             },
             {
-                "file": "images/yl1.png",
-                "name": "IMAGE_YL1",
+                "file": "images/ground4.png",
+                "name": "IMAGE_GROUND4",
                 "type": "png"
             },
             {
-                "file": "images/yl0.png",
-                "name": "IMAGE_YL0",
+                "file": "images/ground3.png",
+                "name": "IMAGE_GROUND3",
+                "type": "png"
+            },
+            {
+                "file": "images/ground2.png",
+                "name": "IMAGE_GROUND2",
+                "type": "png"
+            },
+            {
+                "file": "images/ground1.png",
+                "name": "IMAGE_GROUND1",
                 "type": "png"
             },
             {
@@ -55,7 +65,7 @@
     "shortName": "MarsWatch",
     "uuid": "04854a6f-d4fd-4d54-bc0c-858a18f118ee",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "watchface": true
     }
