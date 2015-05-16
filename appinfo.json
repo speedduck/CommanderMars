@@ -9,48 +9,23 @@
     "resources": {
         "media": [
             {
-                "file": "images/ground9.png",
-                "name": "IMAGE_GROUND9",
+                "file": "images/yr0.png",
+                "name": "IMAGE_YR0",
                 "type": "png"
             },
             {
-                "file": "images/ground8.png",
-                "name": "IMAGE_GROUND8",
+                "file": "images/yf0.png",
+                "name": "IMAGE_YF0",
                 "type": "png"
             },
             {
-                "file": "images/ground7.png",
-                "name": "IMAGE_GROUND7",
+                "file": "images/yl0.png",
+                "name": "IMAGE_YL0",
                 "type": "png"
             },
             {
-                "file": "images/ground6.png",
-                "name": "IMAGE_GROUND6",
-                "type": "png"
-            },
-            {
-                "file": "images/ground5.png",
-                "name": "IMAGE_GROUND5",
-                "type": "png"
-            },
-            {
-                "file": "images/ground4.png",
-                "name": "IMAGE_GROUND4",
-                "type": "png"
-            },
-            {
-                "file": "images/ground3.png",
-                "name": "IMAGE_GROUND3",
-                "type": "png"
-            },
-            {
-                "file": "images/ground2.png",
-                "name": "IMAGE_GROUND2",
-                "type": "png"
-            },
-            {
-                "file": "images/ground1.png",
-                "name": "IMAGE_GROUND1",
+                "file": "images/ground_template.png",
+                "name": "IMAGE_GROUND_TEMPLATE",
                 "type": "png"
             },
             {

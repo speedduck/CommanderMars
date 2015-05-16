@@ -5,17 +5,17 @@ TextLayer *text_layer;
 TextLayer *date_layer;
 InverterLayer *inverter_layer;
 static BitmapLayer *ground;
+static BitmapLayer *yorp_left;
+static BitmapLayer *yorp_front;
+static BitmapLayer *yorp_right;
 static GBitmap *bitmap_1;
 static GBitmap *bitmap_2;
 static GBitmap *bitmap_3;
 static GBitmap *bitmap_4;
-static GBitmap *bitmap_5;
-static GBitmap *bitmap_6;
-static GBitmap *bitmap_7;
-static GBitmap *bitmap_8;
-static GBitmap *bitmap_9;
 int a = 0;
-
+GRect r1 = {{38, 63}, {16, 21}};
+GRect r2 = {{64, 68}, {16, 21}};
+GRect r3 = {{90, 63}, {16, 21}};
 void handle_timechanges(struct tm *tick_time, TimeUnits units_changed) {
   static char time_buffer[10];
   static char date_buffer[10];
@@ -28,47 +28,48 @@ void handle_timechanges(struct tm *tick_time, TimeUnits units_changed) {
   a++;
   switch(a){
     case 1:
-      bitmap_layer_set_bitmap(ground, bitmap_1);
+      r3.origin.y -= 3;
       break;
     case 2:
-      bitmap_layer_set_bitmap(ground, bitmap_2);
+      r3.origin.y -= 2;
+      bitmap_layer_set_bitmap(yorp_front, bitmap_4);
       break;
     case 3:
-      bitmap_layer_set_bitmap(ground, bitmap_3);
+      r3.origin.y -= 2;
+      r1.origin.y -= 3;
       break;
     case 4:
-      bitmap_layer_set_bitmap(ground, bitmap_4);
-      break;
+      r3.origin.y += 2;
+      r1.origin.y -= 2;
+      bitmap_layer_set_bitmap(yorp_front, bitmap_2);
+    break;
     case 5:
-      bitmap_layer_set_bitmap(ground, bitmap_5);
+      r3.origin.y += 2;
+      r1.origin.y -= 2;
       break;
     case 6:
-      bitmap_layer_set_bitmap(ground, bitmap_6);
+      r3.origin.y += 3;
+      r1.origin.y += 2;
+      bitmap_layer_set_bitmap(yorp_front, bitmap_3);
       break;
     case 7:
-      bitmap_layer_set_bitmap(ground, bitmap_7);
-      break;
+      r1.origin.y += 2;
+    break;
     case 8:
-      bitmap_layer_set_bitmap(ground, bitmap_8);
-      break;
-    case 9:
-      bitmap_layer_set_bitmap(ground, bitmap_9);
+      r1.origin.y += 3;
       break;
   }
-  if(a==9)a=0;
+  layer_set_frame(bitmap_layer_get_layer(yorp_right), r3);
+  layer_set_frame(bitmap_layer_get_layer(yorp_left), r1);
+  if(a==8)a=0;
 }
 
 void handle_init(void) {
   // Creates images resource
-  bitmap_1 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND1);
-  bitmap_2 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND2);
-  bitmap_3 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND3);
-  bitmap_4 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND4);
-  bitmap_5 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND5);
-  bitmap_6 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND6);
-  bitmap_7 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND7);
-  bitmap_8 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND8);
-  bitmap_9 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND9);
+  bitmap_1 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_GROUND_TEMPLATE);
+  bitmap_2 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_YL0);
+  bitmap_3 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_YF0);
+  bitmap_4 = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_YR0);
   
 	// Create a window and text layer
 	window = window_create();
@@ -92,8 +93,18 @@ void handle_init(void) {
   
   // Draws ground
   ground = bitmap_layer_create(GRect(0, 56, 144, 56));
+  yorp_left = bitmap_layer_create(r1);
+  yorp_front = bitmap_layer_create(r2);
+  yorp_right = bitmap_layer_create(r3);
   bitmap_layer_set_bitmap(ground, bitmap_1);
-  layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(ground));
+  bitmap_layer_set_bitmap(yorp_left, bitmap_2);
+  bitmap_layer_set_bitmap(yorp_front, bitmap_3);
+  bitmap_layer_set_bitmap(yorp_right, bitmap_4);
+  Layer * l = window_get_root_layer(window);
+  layer_add_child(l, bitmap_layer_get_layer(ground));
+  layer_add_child(l, bitmap_layer_get_layer(yorp_left));
+  layer_add_child(l, bitmap_layer_get_layer(yorp_front));
+  layer_add_child(l, bitmap_layer_get_layer(yorp_right));
   
   time_t now = time(NULL);
   handle_timechanges(localtime(&now), SECOND_UNIT);
@@ -113,7 +124,13 @@ void handle_deinit(void) {
 	text_layer_destroy(date_layer);
   inverter_layer_destroy(inverter_layer);
   gbitmap_destroy(bitmap_1);
+  gbitmap_destroy(bitmap_2);
+  gbitmap_destroy(bitmap_3);
+  gbitmap_destroy(bitmap_4);
   bitmap_layer_destroy(ground);
+  bitmap_layer_destroy(yorp_left);
+  bitmap_layer_destroy(yorp_front);
+  bitmap_layer_destroy(yorp_right);
   
 	// Destroy the window
 	window_destroy(window);
