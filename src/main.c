@@ -13,6 +13,8 @@ static GBitmap *bitmap_2;
 static GBitmap *bitmap_3;
 static GBitmap *bitmap_4;
 int a = 0;
+int b = 0;
+int c = 0;
 GRect r1 = {{38, 63}, {16, 21}};
 GRect r2 = {{64, 68}, {16, 21}};
 GRect r3 = {{90, 63}, {16, 21}};
@@ -62,6 +64,48 @@ void handle_timechanges(struct tm *tick_time, TimeUnits units_changed) {
   layer_set_frame(bitmap_layer_get_layer(yorp_right), r3);
   layer_set_frame(bitmap_layer_get_layer(yorp_left), r1);
   if(a==8)a=0;
+}
+
+static void jump(GRect r, struct BitmapLayer *yorp) {
+  b++;
+ switch(b){
+    case 1:
+      r.origin.y -= 3;
+      break;
+    case 2:
+      r.origin.y -= 2;
+      break;
+    case 3:
+      r.origin.y -= 2;
+      break;
+    case 4:
+      r.origin.y += 2;
+      break;
+    case 5:
+      r.origin.y += 2;
+      break;
+    case 6:
+      r.origin.y += 3;
+      break;
+  }
+  layer_set_frame(bitmap_layer_get_layer(yorp), r);
+  if(b==6)b=0;
+}
+
+static void look(struct BitmapLayer *yorp, const struct GBitmap *bitmap1, const struct GBitmap *bitmap2, const struct GBitmap *bitmap3) {
+  c++;
+  switch(c){
+    case 1:
+      bitmap_layer_set_bitmap(yorp, bitmap1);
+      break;
+    case 2:
+      bitmap_layer_set_bitmap(yorp, bitmap2);
+      break;
+    case 3:
+      bitmap_layer_set_bitmap(yorp, bitmap3);
+      break;
+  }
+  if(c==3)c=0;
 }
 
 void handle_init(void) {

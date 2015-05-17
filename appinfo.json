@@ -40,7 +40,7 @@
     "shortName": "MarsWatch",
     "uuid": "04854a6f-d4fd-4d54-bc0c-858a18f118ee",
     "versionCode": 1,
-    "versionLabel": "1.1",
+    "versionLabel": "1.2",
     "watchapp": {
         "watchface": true
     }
